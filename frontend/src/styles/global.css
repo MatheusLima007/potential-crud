@@ -1,0 +1,23 @@
+*{
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+	height: 100%;
+}
+* html  {
+	height: 100%; /* hack para IE6 que trata height como min-height */
+}
+
+body{
+    color: #fff;
+    background-size: 100%;
+    background: rgba(97, 35, 141, 0.712);
+}
+
+body, input, button, textarea{
+    font: 600 18px Nunito, sans-serif;
+}
