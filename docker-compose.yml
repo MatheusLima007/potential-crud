@@ -1,0 +1,38 @@
+version: "3"
+
+services:
+    backend:
+        container_name: "backend"
+        restart: always
+        build: 
+            context: ./backend/
+            dockerfile: Dockerfile
+        ports:
+            - "3001:3001"
+        volumes:
+            - ./backend:usr/src/app
+
+    pg:
+        image: "postgres:12"
+        restart: always
+        container_name: "postgres"
+        ports:
+            - "5432:5432"
+        volumes:
+            - ./pg/db_data:/var/lib/postgresql/data
+        environment:
+            - POSTGRES_PASSWORD=123456
+            - POSTGRES_USER=postgres
+            - POSTGRES_DB=developers
+            
+    frontend: 
+        container_name: "frontend" 
+        restart: always
+        build: 
+            context: ./frontend/
+            dockerfile: Dockerfile 
+        ports: 
+            - "3000:3000"
+        volumes:
+            - ./frontend:usr/src/app
+        
