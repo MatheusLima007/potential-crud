@@ -6,9 +6,9 @@
   "scripts": {
     "start": "node src/server.js",
     "dev": "nodemon src/server.js --ignore __teste__",
-    "pretest": "sequelize db:migrate",
-    "test": "jest",
-    "posttest": "sequelize db:migrate:undo:all"
+    "pretest": "NODE_ENV=test sequelize db:migrate",
+    "test": "NODE_ENV=test jest",
+    "posttest": "NODE_ENV=test sequelize db:migrate:undo:all"
   },
   "keywords": [],
   "author": "",
