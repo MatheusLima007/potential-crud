@@ -9,7 +9,7 @@ function Routes(){
     return (
         <BrowserRouter>
             <Switch>
-                <Route path="/" exact component={Dashboard} />
+                <Route path="/dashboard" exact component={Dashboard} />
                 <Route path="/updatedeveloper/:id" component={UpdateDeveloper} />
                 <Route path="/craetedeveloper" component={CreateDeveloper} />
             </Switch>

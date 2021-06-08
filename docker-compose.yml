@@ -1,38 +1,42 @@
 version: "3"
 
 services:
-    backend:
-        container_name: "backend"
-        restart: always
-        build: 
-            context: ./backend/
-            dockerfile: Dockerfile
-        ports:
-            - "3001:3001"
-        volumes:
-            - ./backend:usr/src/app
-
-    pg:
+    pgsql:
         image: "postgres:12"
-        restart: always
-        container_name: "postgres"
         ports:
             - "5432:5432"
         volumes:
             - ./pg/db_data:/var/lib/postgresql/data
         environment:
-            - POSTGRES_PASSWORD=123456
-            - POSTGRES_USER=postgres
             - POSTGRES_DB=developers
-            
-    frontend: 
-        container_name: "frontend" 
-        restart: always
+            - POSTGRES_PASSWORD=postgres
+            - POSTGRES_USER=postgres
+        networks:
+            - sail
+    backend:
         build: 
-            context: ./frontend/
+            context: ./backend
+            dockerfile: Dockerfile
+        ports:
+            - "3001:3001"
+        volumes:
+            - ./backend:/app
+        networks:
+            - sail
+        depends_on: 
+            - pgsql
+    frontend: 
+        build: 
+            context: ./frontend
             dockerfile: Dockerfile 
         ports: 
             - "3000:3000"
         volumes:
-            - ./frontend:usr/src/app
-        
+            - ./frontend:/app
+networks:
+    sail:
+        driver: bridge
+volumes:
+    sailpostgresql:
+        driver: local
+            

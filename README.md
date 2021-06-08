@@ -17,13 +17,13 @@ Minha primeira aplicação completa, feita para rodar em qualquer ambiente. Eu n
 # Baixar as imagens e subir o container no Docker
 
 ```
-    docker compose up 
+    docker-compose up -d 
 ```
 
 # Comando para executar as migrations no Banco de Dados
 
 ```
-    npm sequelize db:migrate
+    docker exec backend -it npm sequelize db:migrate
 ```
 
 # Acesso ao frontend

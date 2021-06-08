@@ -1,12 +1,13 @@
 FROM node:alpine
 
-WORKDIR /usr/app
+WORKDIR /app
 
 COPY package*.json ./
+
 RUN npm install
 
 COPY . .
 
-EXPOSE 3001
+#RUN npx sequelize-cli db:migrate
 
-CMD [ "npm", "start" ]
+CMD [ "npm", "run", "dev" ]
