@@ -23,7 +23,7 @@ Minha primeira aplicação completa, feita para rodar em qualquer ambiente. Eu n
 # Comando para executar as migrations no Banco de Dados
 
 ```
-    docker exec backend -it npm sequelize db:migrate
+    docker exec -it potential-crud_backend_1 npx sequelize-cli db:migrate
 ```
 
 # Acesso ao frontend
